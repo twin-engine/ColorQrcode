@@ -12,7 +12,7 @@
 composer require rotoos/color-qrcode
 
 #### 使用说明
-
+(```)
 <?php
 
 require 'vendor/autoload.php';
@@ -40,7 +40,7 @@ $color = Factory::color(['#087', '#431', '#a2d', '#a2d',]);
         imagejpeg($handle);
     })
     ->output($color);
-
+(```)
 #### 其他
 MultipleColor Factory::color($hexColor = [], $alpha = 1)
 创建一个颜色实例
