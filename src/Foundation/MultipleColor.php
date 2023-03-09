@@ -1,8 +1,9 @@
 <?php
 
-namespace Rotoos\Qrcode\Foundation;
+namespace rotoos\colorQrcode\Foundation;
 
-use Rotoos\Qrcode\Support\Helper;
+use rotoos\colorQrcode\Exception\InvalidException;
+use rotoos\colorQrcode\Support\Helper;
 
 class MultipleColor extends Plus
 {
@@ -20,11 +21,10 @@ class MultipleColor extends Plus
         $this->alpha = $alpha;
     }
 
-    /****************************************
+    /**
      * 通过计算得出图片的颜色 index.
      * 然后根据 index 得到图片当前位置的颜色
      * 遍历每一个位置把黑色换成当前设置的颜色
-     *
      * @return $this
      */
     public function build()
@@ -36,8 +36,8 @@ class MultipleColor extends Plus
 
         $this->loopImagePoint(function ($x, $y) use ($block) {
             // In $i, $j drawing point
-            $x_index = (int) floor($x / ($this->imageWidth / $block));
-            $y_index = (int) floor($y / ($this->imageHeight / $block));
+            $x_index = (int)floor($x / ($this->imageWidth / $block));
+            $y_index = (int)floor($y / ($this->imageHeight / $block));
 
             // The plane is converted into the linear algorithm
             $index = $x_index + (2 * $y_index);
@@ -49,11 +49,12 @@ class MultipleColor extends Plus
         return $this;
     }
 
-    /****************************************
+    /**
      * 设置图片的颜色，十六进制数组
-     *
      * @param array $colorParameters
      * @param $alpha
+     * @return void
+     * @throws InvalidException
      */
     protected function setColor(array $colorParameters, $alpha)
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Rotoos\Qrcode\Exception;
+namespace rotoos\colorQrcode\Exception;
 
 class InvalidException extends QrCodePlusException
 {

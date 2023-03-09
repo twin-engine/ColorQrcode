@@ -17,8 +17,8 @@ composer require rotoos/color-qrcode
 
 require 'vendor/autoload.php';
 
-use Rotoos\Qrcode\Factory;
-use Rotoos\Qrcode\QrCodePlus;
+use rotoos\colorQrcode\Factory;
+use rotoos\colorQrcode\QrCodePlus;
 
 /****************************************
  * 通过工厂方法，获取到你想创建二维码的样式
@@ -38,6 +38,20 @@ $color = Factory::color(['#087', '#431', '#a2d', '#a2d',]);
     ->setOutput(function($handle){
         header('Content-Type: image/jpeg');
         imagejpeg($handle);
+    })
+    ->output($color);
+ 或者   
+(new QrCodePlus)
+    ->setText('rotoos') //生成的文本
+    ->setMargin(50)
+    ->setOutput(function($handle){
+        header('Content-Type: image/png');
+        $picpath = './'; //存放图片的目录
+        if(!is_dir($picpath)){
+            mkdir($picpath,0777,true);
+        }
+        $imgname = $picpath."rotoos.png"; //生成的文件地址
+        imagepng($handle,$imgname);
     })
     ->output($color);
 ```

@@ -1,14 +1,13 @@
 <?php
 
-namespace Rotoos\Qrcode\Support;
+namespace rotoos\colorQrcode\Support;
 
-use Rotoos\Qrcode\Exception\InvalidException;
+use rotoos\colorQrcode\Exception\InvalidException;
 
 trait Helper
 {
-    /****************************************
+    /**
      * 十六进制转换成RGB颜色值
-     *
      * @param $hex
      * @return array
      * @throws InvalidException
@@ -23,9 +22,9 @@ trait Helper
 
         $color = [];
         if (3 === strlen($hex)) {
-            $color['r'] = hexdec(substr($hex, 0, 1).substr($hex, 0, 1));
-            $color['g'] = hexdec(substr($hex, 1, 1).substr($hex, 1, 1));
-            $color['b'] = hexdec(substr($hex, 2, 1).substr($hex, 2, 1));
+            $color['r'] = hexdec(substr($hex, 0, 1) . substr($hex, 0, 1));
+            $color['g'] = hexdec(substr($hex, 1, 1) . substr($hex, 1, 1));
+            $color['b'] = hexdec(substr($hex, 2, 1) . substr($hex, 2, 1));
         } elseif (6 === strlen($hex)) {
             $color['r'] = hexdec(substr($hex, 0, 2));
             $color['g'] = hexdec(substr($hex, 2, 2));

@@ -1,6 +1,9 @@
 <?php
 
+use rotoos\colorQrcode\Foundation\ImageStyle;
+use rotoos\colorQrcode\Foundation\MultipleColor;
+
 return [
-    'image' => \Rotoos\Qrcode\Foundation\ImageStyle::class,
-    'color' => \Rotoos\Qrcode\Foundation\MultipleColor::class,
+    'image' => ImageStyle::class,
+    'color' => MultipleColor::class,
 ];

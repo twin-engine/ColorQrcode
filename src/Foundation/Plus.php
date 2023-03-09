@@ -1,10 +1,10 @@
 <?php
 
-namespace Rotoos\Qrcode\Foundation;
+namespace rotoos\colorQrcode\Foundation;
 
 use Closure;
-use Rotoos\Qrcode\Contracts\PlusInterface;
-use Rotoos\Qrcode\Exception\InvalidException;
+use rotoos\colorQrcode\Contracts\PlusInterface;
+use rotoos\colorQrcode\Exception\InvalidException;
 
 class Plus implements PlusInterface
 {
@@ -17,30 +17,9 @@ class Plus implements PlusInterface
     // 二维码图片的高
     protected $imageHeight;
 
-    /****************************************
-     * 遍历图片的每一个像素点.
-     *
-     * @param Closure $closure
-     */
-    protected function loopImagePoint(Closure $closure)
-    {
-        // loop img px
-        for ($y = 0; $y < $this->imageHeight; ++$y) {
-            for ($x = 0; $x < $this->imageWidth; ++$x) {
-                // is black change color
-                $color_index = imagecolorat($this->imageHandle, $x, $y);
-
-                if (0 === $color_index) {
-                    $closure($x, $y);
-                }
-            }
-        }
-    }
-
-    /****************************************
+    /**
      * 通过图片字符串创建图片
      * 并初始化图片的高度，透明度
-     *
      * @param $imageString
      * @return $this
      * @throws InvalidException
@@ -62,11 +41,10 @@ class Plus implements PlusInterface
         return $this;
     }
 
-    /****************************************
+    /**
      * 实际输出图片方法，控制输出图片格式。
-     *
-     * @param null $output
-     * @return bool
+     * @param $output
+     * @return true|void
      */
     public function output($output = null)
     {
@@ -84,5 +62,25 @@ class Plus implements PlusInterface
     public function build()
     {
         throw new InvalidException('Please rewrite build method');
+    }
+
+    /**
+     * 遍历图片的每一个像素点.
+     * @param Closure $closure
+     * @return void
+     */
+    protected function loopImagePoint(Closure $closure)
+    {
+        // loop img px
+        for ($y = 0; $y < $this->imageHeight; ++$y) {
+            for ($x = 0; $x < $this->imageWidth; ++$x) {
+                // is black change color
+                $color_index = imagecolorat($this->imageHandle, $x, $y);
+
+                if (0 === $color_index) {
+                    $closure($x, $y);
+                }
+            }
+        }
     }
 }
