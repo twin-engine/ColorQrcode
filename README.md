@@ -21,10 +21,11 @@ use rotoos\colorQrcode\Factory;
 use rotoos\colorQrcode\QrCodePlus;
 
 /****************************************
- * 通过工厂方法，获取到你想创建二维码的样式
+ * 通过工厂方法，获取到你想创建二维码的样式（支持四格彩码与九格彩码）
  * 现在仅有：color, image
  ****************************************/
-$color = Factory::color(['#087', '#431', '#a2d', '#a2d',]);
+$color = Factory::color(['#087', '#431', '#a2d', '#a2d',]);//四格彩色
+$color = Factory::color(['#431', '#a2d', '#087', '#a2d','#431','#087','#a2d', '#087', '#a2d',]);//九格彩色
 // $image = Factory::image(imagecreatefrompng('Rotoos.png'));
 
 
