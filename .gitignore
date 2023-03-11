@@ -1,6 +1,7 @@
 .git
 .svn
 .idea
+.gitee
 /vendor
 /composer.lock
 !.gitignore
